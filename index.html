@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload BOM - Amar Radio Corporation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0071E3;
+            text-decoration: none;
+        }
+        
+        .page-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+        }
+        
+        .nav-links a {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #0071E3;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .hero p {
+            font-size: 15px;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background-color: white;
+            padding: 32px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 16px 12px;
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 12px;
+            background: #f0f7ff;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+            color: #0071E3;
+        }
+        
+        .feature-item:hover .feature-icon {
+            background: #0071E3;
+        }
+        
+        .feature-item:hover .feature-icon i {
+            color: white;
+        }
+        
+        .feature-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .feature-item p {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        .card.features-card {
+            grid-row: span 2;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .features-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .feature-list-icon {
+            width: 40px;
+            height: 40px;
+            background: #f0f7ff;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .feature-list-icon i {
+            font-size: 18px;
+            color: #0071E3;
+        }
+        
+        .feature-list-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 4px 0;
+        }
+        
+        .feature-list-content p {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Benefits List in Template Card */
+        .benefits-compact {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        
+        .benefits-compact li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #555;
+        }
+        
+        .benefits-compact li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .benefits-compact i {
+            font-size: 14px;
+            color: #0071E3;
+            width: 16px;
+            flex-shrink: 0;
+        }
+        
+        /* Form Elements */
+        .form-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 6px;
+        }
+        
+        .form-control, .form-select {
+            border: 1px solid #d3d3d3;
+            border-radius: 3px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #0071E3;
+            box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.1);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        /* File Upload Area */
+        .file-upload {
+            border: 2px dashed #d3d3d3;
+            border-radius: 3px;
+            padding: 24px;
+            text-align: center;
+            background: #fafafa;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 16px;
+        }
+        
+        .file-upload:hover {
+            border-color: #0071E3;
+            background: #f0f7ff;
+        }
+        
+        .file-upload i {
+            font-size: 32px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+        
+        .file-upload p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .file-name {
+            font-size: 13px;
+            color: #0071E3;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        /* Buttons */
+        .btn {
+            border-radius: 3px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: #0071E3;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #005bb5;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #e0e0e0;
+            color: #555;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d3d3d3;
+            color: #333;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        /* Support Section */
+        .support-card {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .support-card h3, .support-card p {
+            color: white;
+        }
+        
+        .contact-info {
+            font-size: 13px;
+            margin: 12px 0;
+        }
+        
+        .contact-info i {
+            margin-right: 6px;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 12px 16px;
+            border-radius: 3px;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Modal Footer Styling for better alignment */
+        .modal-footer {
+            flex-direction: column;
+            align-items: stretch;
+            border-top: none;
+            padding: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer p {
+            margin: 0;
+            font-size: 13px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+        
+        .social-icons a:hover {
+            color: #0071E3;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .nav-links {
+                gap: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header .container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .page-title {
+                order: -1;
+            }
+            
+            .nav-links {
+                font-size: 13px;
+                gap: 12px;
+            }
+            
+            .hero h1 {
+                font-size: 22px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">ARC</a>
+            <div class="page-title">Upload BOM</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Upload Your BOM for Quick Quotation</h1>
+            <p>Fast, accurate pricing for all your electronic component needs</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <div class="card">
+                    <h3><i class="fas fa-file-download"></i> Download Sample Template</h3>
+                    <p>Use the **ARC_BOM_Upload_Template** file to prepare your BOM for quick processing.</p>
+                    
+                    <ul class="benefits-compact">
+                        <li><i class="fas fa-rocket"></i> Upload in seconds</li>
+                        <li><i class="fas fa-file-excel"></i> Smart template compatibility</li>
+                        <li><i class="fas fa-user-tie"></i> Expert assistance available</li>
+                        <li><i class="fas fa-tachometer-alt"></i> Quick competitive quotes</li>
+                        <li><i class="fas fa-lock"></i> Secure & private</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-secondary" id="downloadBtn" download="ARC_BOM_Upload_Template.xlsx">
+                        <i class="fas fa-download"></i> Download Template (XLSX)
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-upload"></i> Upload Your BOM</h3>
+                    <form id="bomForm">
+                        <div class="file-upload" id="fileUploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p><strong>Click to upload</strong> or drag and drop</p>
+                            <p style="font-size: 12px; color: #999;">Excel files only (.xlsx, .xls)</p>
+                            <input type="file" id="fileInput" accept=".xlsx,.xls" style="display: none;">
+                            <div class="file-name" id="fileName"></div>
+                        </div>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="form-label">Project Name</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Enter project name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">End Customer</label>
+                                <input type="text" class="form-control" id="endCustomer" placeholder="Customer name">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <label class="form-label">Remarks (Optional)</label>
+                            <textarea class="form-control" id="remarks" placeholder="Add any special requirements or notes"></textarea>
+                        </div>
+                        
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Submit BOM
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                        
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i> BOM uploaded successfully! Our team will contact you shortly.
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card support-card">
+                    <h3><i class="fas fa-headset"></i> Need Help?</h3>
+                    <p>Our experts are ready to assist with your BOM requirements and quotations.</p>
+                    <div class="contact-info">
+                        <div><i class="fas fa-envelope"></i> sales@amarradio.com</div>
+                        <div><i class="fas fa-phone"></i> +91-XXXXXXXXXX</div>
+                    </div>
+                    <a href="mailto:sales@amarradio.com" class="btn btn-secondary">
+                        <i class="fas fa-comment-dots"></i> Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© Amar Radio Corporation | Since 1968</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Action Required</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-lock mb-3" style="font-size: 32px; color: #0071E3;"></i>
+                    <p class="mb-4" style="font-size: 14px; font-weight: 500;">
+                        To upload your **Bill of Materials (BOM)**, please **log in** to your existing account or **register** a new one.
+                    </p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="#" class="btn btn-primary w-100">
+                        <i class="fas fa-sign-in-alt"></i> Log In
+                    </a>
+                    <a href="#" class="btn btn-secondary w-100 mt-2">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // *** SIMULATION: Set this to 'true' to allow form submission ***
+        const isLoggedIn = false; 
+
+        // File download data based on your uploaded file
+        const templateFileContent = `S.No.,Manufacturer Part Number (MPN),Manufacturer Name,Description,Quantity Required,Package Type,Target Price (Optional),Remarks / Notes,Project Name,End Customer
+1,LM2576T-5.0,Texas Instruments,5V Regulator IC,50,TO-220,₹45.00,Alternate accepted,Power Supply Design,ABB India
+2,LC1D25BD,Schneider Electric,Contactor 25A 24V DC,20,DIN Rail,"₹1,250.00",Urgent requirement,Control Panel Upgrade,L&T Construction
+3,ATMEGA328P-PU,Microchip Technology,8-bit Microcontroller,100,DIP-28,₹80.00,Must be original,IoT Project,Startup Tech
+4,10uF 0805 X7R,Murata,Ceramic Capacitor 10uF 50V,5000,0805,₹0.50,,Sensor Module,Defense Contractor
+5,LED-RED-3MM,Kingbright,3mm Red LED,2000,DIP-2,₹1.20,Standard Brightness,Display Board,Automotive Lighting`;
+        const templateFileName = 'ARC_BOM_Upload_Template.csv'; // Keeping it CSV to match the provided snippet structure
+        
+        // Get Bootstrap modal instance
+        const loginModalElement = document.getElementById('loginModal');
+        const loginModal = new bootstrap.Modal(loginModalElement);
+
+        // File upload handling
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        
+        fileUploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileName.textContent = `Selected: ${e.target.files[0].name}`;
+            }
+        });
+        
+        // Drag and drop
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.style.borderColor = '#0071E3';
+            fileUploadArea.style.background = '#f0f7ff';
+        });
+        
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.style.borderColor = '#d3d3d3';
+            fileUploadArea.style.background = '#fafafa';
+        });
+        
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.style.borderColor = '#d3d3d3';
+            fileUploadArea.style.background = '#fafafa';
+            
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                fileName.textContent = `Selected: ${e.dataTransfer.files[0].name}`;
+            }
+        });
+        
+        // Form submission (MODIFIED for login check)
+        document.getElementById('bomForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Login Check Logic
+            if (!isLoggedIn) {
+                loginModal.show(); // Show the login/register modal
+                return; // Stop form submission
+            }
+            
+            const file = fileInput.files[0];
+            const projectName = document.getElementById('projectName').value;
+            
+            if (!file) {
+                alert('Please select a file to upload');
+                return;
+            }
+            
+            if (!projectName) {
+                alert('Please enter a project name');
+                return;
+            }
+            
+            // --- Successful Form Submission Simulation ---
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form fields after 3 seconds
+            setTimeout(() => {
+                document.getElementById('bomForm').reset();
+                fileName.textContent = '';
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000);
+        });
+        
+        // Download template (MODIFIED to create and download the actual file content)
+        document.getElementById('downloadBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 1. Create a Blob from the CSV content
+            const blob = new Blob([templateFileContent], { type: 'text/csv;charset=utf-8;' });
+            
+            // 2. Create a link element
+            const link = document.createElement('a');
+            
+            // 3. Create a URL for the Blob and set attributes
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', templateFileName);
+            
+            // 4. Programmatically click the link to trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Clean up the URL object
+            URL.revokeObjectURL(url);
+
+            alert(`Downloading the sample template: ${templateFileName}`);
+        });
+    </script>
+</body>
+</html>
